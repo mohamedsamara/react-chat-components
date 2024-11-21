@@ -7,7 +7,7 @@ const Profile = () => {
   const [step, setStep] = useState(0);
 
   return (
-    <main className="flex flex-col justify-center mx-auto max-w-lg min-w-md w-full h-full px-10">
+    <main className="flex flex-col justify-center w-full h-full max-w-lg px-10 mx-auto min-w-md">
       <div className="space-y-10">
         {step === 0 ? (
           <StepCard title="Create profile" subtitle="Add your name.">

@@ -126,7 +126,7 @@ const AttachmentUploader = ({ chat }: { chat: Chat }) => {
 
       <input
         type="file"
-        accept="image/*,video/*,text/plain,application/JSON"
+        accept="image/*,video/*,text/plain,application/json,application/pdf"
         // accept=".pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         ref={hiddenFileInput}
         onChange={_onChange}

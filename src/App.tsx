@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
+const Profile = lazy(() => import("pages/Profile"));
 import Chats from "pages/Chats";
 const Chat = lazy(() => import("pages/Chat"));
 const ChatSettings = lazy(() => import("pages/ChatSettings"));
@@ -40,6 +41,7 @@ const App = () => {
               }
             />
           </Route>
+          <Route path="profile" element={<Profile />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>

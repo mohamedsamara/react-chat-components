@@ -11,9 +11,9 @@ import Chats from "pages/Chats";
 const Chat = lazy(() => import("pages/Chat"));
 const ChatSettings = lazy(() => import("pages/ChatSettings"));
 import NoMatch from "pages/NoMatch";
-import { ChatLayout } from "./pages/Chats/components";
-import Modals from "./components/Modals";
-import SpinnerOverlay from "./components/SpinnerOverlay";
+import { ChatLayout } from "pages/Chats/components";
+import Modals from "components/Modals";
+import SpinnerOverlay from "components/SpinnerOverlay";
 
 const App = () => {
   return (

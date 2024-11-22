@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import useStore from "lib/stores";
-import { ChatFooter, ChatHeader, Msgs } from "./components";
-import { EmptyChat } from "./components";
+import { ChatFooter, ChatHeader, Msgs, EmptyChat } from "./components";
 
 const Chat = () => {
   const { chatId } = useParams();

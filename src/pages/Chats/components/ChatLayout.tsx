@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 
-import ChatHeader from "./ChatsHeader";
+import ChatsHeader from "./ChatsHeader";
 import ChatList from "./ChatList";
 
 const ChatLayout = () => {
   return (
     <main className="flex flex-col h-full overflow-hidden lg:flex-row">
       <aside className="hidden lg:block min-w-[310px] lg:max-w-[330px] border-r border-r-gray-100">
-        <ChatHeader />
+        <ChatsHeader />
         <div className="overflow-y-auto no-scrollbar h-[calc(100vh_-3.5rem)]">
           <ChatList />
         </div>

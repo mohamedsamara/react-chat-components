@@ -72,7 +72,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground h-screen;
+    @apply h-screen bg-background text-foreground;
   }
 
   #root {

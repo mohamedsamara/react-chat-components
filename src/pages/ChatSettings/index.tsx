@@ -13,8 +13,6 @@ const ChatSettings = () => {
 
   if (!chat || !chatId) return <EmptyChat />;
 
-  if (!chat || !chatId) return <EmptyChat />;
-
   const isGroupChat = chat.type === "GROUP";
   const isOwner = chat.ownerId === profile.id;
   const canEdit = isOwner && isGroupChat;

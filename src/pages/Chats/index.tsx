@@ -1,4 +1,4 @@
-import { ChatList, ChatsHeader, EmptyChats } from "./components";
+import { ChatsHeader, ChatList, EmptyChats } from "./components";
 
 const Chats = () => {
   return (

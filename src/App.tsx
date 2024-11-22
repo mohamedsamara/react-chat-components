@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,11 +7,12 @@ import {
 } from "react-router-dom";
 
 import Chats from "pages/Chats";
-import Chat from "pages/Chat";
-import ChatSettings from "pages/ChatSettings";
+const Chat = lazy(() => import("pages/Chat"));
+const ChatSettings = lazy(() => import("pages/ChatSettings"));
 import NoMatch from "pages/NoMatch";
 import { ChatLayout } from "./pages/Chats/components";
 import Modals from "./components/Modals";
+import SpinnerOverlay from "./components/SpinnerOverlay";
 
 const App = () => {
   return (
@@ -21,8 +23,22 @@ const App = () => {
           <Route path="/" element={<Navigate to="/chats" />} />
           <Route path="chats" element={<ChatLayout />}>
             <Route index element={<Chats />} />
-            <Route path=":chatId" element={<Chat />} />
-            <Route path=":chatId/settings" element={<ChatSettings />} />
+            <Route
+              path=":chatId"
+              element={
+                <Suspense fallback={<SpinnerOverlay />}>
+                  <Chat />
+                </Suspense>
+              }
+            />
+            <Route
+              path=":chatId/settings"
+              element={
+                <Suspense fallback={<SpinnerOverlay />}>
+                  <ChatSettings />
+                </Suspense>
+              }
+            />
           </Route>
           <Route path="*" element={<NoMatch />} />
         </Routes>

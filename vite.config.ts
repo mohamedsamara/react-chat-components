@@ -1,16 +1,17 @@
-import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { dependencies } from "./package.json";
 
-const SEPARATE_MODULES = [
-  "react-router",
-  "date-fns",
-  "lucide-react",
-  "@radix-ui",
-  "zod",
-];
+const renderChunks = (deps: Record<string, string>) => {
+  let chunks = {} as Record<string, any>;
+  Object.keys(deps).forEach((key) => {
+    if (["react", "react-router-dom", "react-dom"].includes(key)) return;
+    chunks[key] = [key];
+  });
+  return chunks;
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,21 +25,9 @@ export default defineConfig({
         }),
       ],
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (
-              id.includes("react") &&
-              !SEPARATE_MODULES.some((module) => id.includes(module))
-            ) {
-              return "react-vendor";
-            }
-            for (const module of SEPARATE_MODULES) {
-              if (id.includes(module)) {
-                return module;
-              }
-            }
-            return "vendor";
-          }
+        manualChunks: {
+          vendor: ["react", "react-router-dom", "react-dom"],
+          ...renderChunks(dependencies),
         },
         globals: {
           react: "React",
